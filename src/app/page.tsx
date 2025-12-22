@@ -63,12 +63,11 @@ export default function Home() {
 
   return (
     <main className="min-h-screen relative bg-[#121212] text-white fade-in">
-      {/* Static straight line on the right */}
-      {/* <div className='w-75 bg-[#e223a5] h-2 fixed top-0 left-0'></div>
-      <div className='w-75 bg-[#e223a5] h-2 fixed bottom-0 right-0'></div> */}
       <Navigation />
       <HeroSection />
-      <AboutSection />
+      <div id="about"> 
+        <AboutSection />
+      </div>
       <EventHighlights />
       <KeyGuests />
       <SponsorsSection />
