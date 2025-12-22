@@ -8,6 +8,8 @@ import { KeyGuests } from "@/components/key-guests";
 import { Footer } from "@/components/footer";
 import { SponsorsSection } from "@/components/sponsor-section";
 import { Navigation } from "@/components/navigation";
+import { motion } from "framer-motion";
+import { ArrowUp } from "lucide-react";
 
 function Loading() {
   const [progress, setProgress] = useState(0);
@@ -57,6 +59,10 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   if (loading) {
     return <Loading />;
   }
@@ -65,7 +71,7 @@ export default function Home() {
     <main className="min-h-screen relative bg-[#121212] text-white fade-in">
       <Navigation />
       <HeroSection />
-      <div id="about"> 
+      <div id="about">
         <AboutSection />
       </div>
       <EventHighlights />
@@ -73,12 +79,14 @@ export default function Home() {
       <SponsorsSection />
       <Footer />
       {showTop && (
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-8 right-8 bg-[#e223a5] text-white p-3 rounded-full shadow-lg hover:scale-110 transition animate-bounce"
+        <motion.button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 bg-gradient-to-r from-[#52f3fe] transition animate-bounce to-[#e223a5] text-black p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300"
+          whileHover={{ scale: 1.1 }}
+          aria-label="Back to top"
         >
-          ↑
-        </button>
+          <ArrowUp className="h-5 w-5" />
+        </motion.button>
       )}
     </main>
   );
