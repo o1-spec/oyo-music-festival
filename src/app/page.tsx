@@ -1,15 +1,23 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import { HeroSection } from '@/components/hero-section'
-import { AboutSection } from '@/components/about-section'
-import { EventHighlights } from '@/components/event-highlights'
-import { KeyGuests } from '@/components/key-guests'
-import { Footer } from '@/components/footer'
-import { SponsorsSection } from '@/components/sponsor-section'
-import { Navigation } from '@/components/navigation'
+import { useState, useEffect } from "react";
+import { HeroSection } from "@/components/hero-section";
+import { AboutSection } from "@/components/about-section";
+import { EventHighlights } from "@/components/event-highlights";
+import { KeyGuests } from "@/components/key-guests";
+import { Footer } from "@/components/footer";
+import { SponsorsSection } from "@/components/sponsor-section";
+import { Navigation } from "@/components/navigation";
 
 function Loading() {
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((prev) => (prev >= 100 ? 100 : prev + 10));
+    }, 300);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-[#161616] relative overflow-hidden">
       <div className="wave mb-8">
@@ -21,27 +29,40 @@ function Loading() {
         <div className="bar bg-[#e223a5]"></div>
         <div className="bar bg-[#52f3fe]"></div>
       </div>
+      <div className="w-64 h-2 bg-gray-700 rounded-full overflow-hidden mb-4">
+        <div
+          className="h-full bg-gradient-to-r from-[#52f3fe] to-[#e223a5] transition-all duration-300"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
       <p className="text-lg bg-gradient-to-r from-[#52f3fe] to-[#e223a5] bg-clip-text text-transparent font-semibold animate-pulse">
         Igniting the Festival Spirit...
       </p>
     </main>
-  )
+  );
 }
 
 export default function Home() {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
+  const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3000) 
-    return () => clearTimeout(timer)
-  }, [])
+    const timer = setTimeout(() => setLoading(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => setShowTop(window.scrollY > 300);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   if (loading) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (
-    <main className="min-h-screen relative bg-[#121212] text-white fade-in">    
+    <main className="min-h-screen relative bg-[#121212] text-white fade-in">
       {/* Static straight line on the right */}
       {/* <div className='w-75 bg-[#e223a5] h-2 fixed top-0 left-0'></div>
       <div className='w-75 bg-[#e223a5] h-2 fixed bottom-0 right-0'></div> */}
@@ -52,6 +73,14 @@ export default function Home() {
       <KeyGuests />
       <SponsorsSection />
       <Footer />
+      {showTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-8 right-8 bg-[#e223a5] text-white p-3 rounded-full shadow-lg hover:scale-110 transition animate-bounce"
+        >
+          ↑
+        </button>
+      )}
     </main>
-  )
+  );
 }
