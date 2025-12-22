@@ -47,15 +47,14 @@ export function HeroSection() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 }, // Removed transition from here
+    visible: { opacity: 1, y: 0 }, 
   };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
-      {/* Social media icons in top right */}
-      <div className="absolute top-6 right-6 z-20 flex gap-4">
+      <div className="absolute top-16 right-6 z-20 flex gap-4">
         <a
-          href="https://instagram.com/oyomusicfestival" // Replace with real link
+          href="https://instagram.com/oyomusicfestival" 
           target="_blank"
           rel="noopener noreferrer"
           className="text-[#52f3fe] hover:text-[#e223a5] transition-colors duration-300"
@@ -66,7 +65,7 @@ export function HeroSection() {
           </svg>
         </a>
         <a
-          href="https://twitter.com/oyomusicfestival" // Replace with real link
+          href="https://twitter.com/oyomusicfestival" 
           target="_blank"
           rel="noopener noreferrer"
           className="text-[#52f3fe] hover:text-[#e223a5] transition-colors duration-300"
@@ -77,7 +76,7 @@ export function HeroSection() {
           </svg>
         </a>
         <a
-          href="https://facebook.com/oyomusicfestival" // Replace with real link
+          href="https://facebook.com/oyomusicfestival" 
           target="_blank"
           rel="noopener noreferrer"
           className="text-[#52f3fe] hover:text-[#e223a5] transition-colors duration-300"

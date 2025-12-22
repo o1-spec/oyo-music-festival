@@ -44,6 +44,46 @@ function Loading() {
   );
 }
 
+function ScrollingBanner() {
+  return (
+    <div className="fixed overflow-hidden bg-gradient-to-r from-[#52f3fe]/10 to-[#e223a5]/10 border-b border-[#52f3fe]/20 py-2 z-50">
+      <div className="flex w-max animate-marquee">
+        <span className="whitespace-nowrap px-4 text-sm font-medium text-white">
+          🎉 Oyo Music Festival 2026 – Celebrating Yoruba Culture – March 2026 – University of Ibadan – Get Your Tickets Now!
+        </span>
+        <span className="whitespace-nowrap px-4 text-sm font-medium text-white">
+          🎉 Oyo Music Festival 2026 – Celebrating Yoruba Culture – March 2026 – University of Ibadan – Get Your Tickets Now!
+        </span>
+        <span className="whitespace-nowrap px-4 text-sm font-medium text-white">
+          🎉 Oyo Music Festival 2026 – Celebrating Yoruba Culture – March 2026 – University of Ibadan – Get Your Tickets Now!
+        </span>
+        <span className="whitespace-nowrap px-4 text-sm font-medium text-white">
+          🎉 Oyo Music Festival 2026 – Celebrating Yoruba Culture – March 2026 – University of Ibadan – Get Your Tickets Now!
+        </span>
+        <span className="whitespace-nowrap px-4 text-sm font-medium text-white">
+          🎉 Oyo Music Festival 2026 – Celebrating Yoruba Culture – March 2026 – University of Ibadan – Get Your Tickets Now!
+        </span>
+      </div>
+
+      <style jsx>{`
+        @keyframes marquee {
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(-50%);
+          }
+        }
+
+        .animate-marquee {
+          animation: marquee 40s linear infinite;
+        }
+      `}</style>
+    </div>
+  );
+}
+
+
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [showTop, setShowTop] = useState(false);
@@ -70,6 +110,7 @@ export default function Home() {
   return (
     <main className="min-h-screen relative bg-[#121212] text-white fade-in">
       <Navigation />
+      <ScrollingBanner />
       <HeroSection />
       <div id="about">
         <AboutSection />
@@ -81,7 +122,7 @@ export default function Home() {
       {showTop && (
         <motion.button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 bg-gradient-to-r from-[#52f3fe] transition animate-bounce to-[#e223a5] text-black p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300"
+          className="fixed bottom-6 right-6 bg-gradient-to-r from-[#52f3fe] to-[#e223a5] text-black p-3 rounded-full shadow-lg hover:scale-110 transition-all duration-300"
           whileHover={{ scale: 1.1 }}
           aria-label="Back to top"
         >
