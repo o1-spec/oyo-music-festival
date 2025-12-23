@@ -3,6 +3,7 @@ import { Playfair_Display, Geist } from "next/font/google";
 // import { Analytics } from '@vercel/analytics/next'
 import "./globals.css";
 import { CustomCursor } from "@/components/custom-cursor";
+import { ClientLayout } from "@/components/ClientLayout";
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
@@ -49,6 +50,7 @@ export default function RootLayout({
       <body
         className={`${geist.variable} ${playfairDisplay.variable} font-sans antialiased`}
       >
+        <ClientLayout />
         <CustomCursor />
         {children}
         {/* <Analytics /> */}

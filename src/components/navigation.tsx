@@ -30,16 +30,29 @@ export function Navigation() {
   }
 
   const navLinks = [
-    { href: '#hero', label: 'Home' },
+    { href: '/', label: 'Home' },
+    { href: '/schedule', label: 'Schedule' },
+    { href: '/tickets', label: 'Tickets' },
+    { href: '/sponsors', label: 'Sponsors' },
+    { href: '/contact', label: 'Contact' },
+  ]
+
+  const mobileNavLinks = [
+    { href: '/', label: 'Home' },
     { href: '#about', label: 'About' },
-    { href: '#highlights', label: 'Events' },
+    { href: '/schedule', label: 'Schedule' },
+    { href: '/tickets', label: 'Tickets' },
     { href: '#guests', label: 'Guests' },
-    { href: '#sponsors', label: 'Sponsors' },
+    { href: '/sponsors', label: 'Sponsors' },
+    { href: '/faq', label: 'FAQ' },
+    { href: '/contact', label: 'Contact' },
   ]
 
   return (
     <>
+      {/* Desktop Navigation */}
       <div className="fixed top-0 left-1/2 transform -translate-x-1/2 z-40 hidden lg:block">
+        {/* Thread with subtle swing */}
         <div
           className={`w-0.5 bg-gradient-to-b from-[#52f3fe] to-[#e223a5] mx-auto transition-all duration-1500 ease-out ${
             isVisible ? 'h-10' : 'h-0'
@@ -61,6 +74,7 @@ export function Navigation() {
             animation: isVisible ? 'navSwing 4s ease-in-out infinite' : 'none',
           }}
         >
+          {/* Connection point */}
           <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#52f3fe] rounded-full border-2 border-[#e223a5] shadow-inner" />
           <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-[#121212] rounded-full" />
 
@@ -74,15 +88,21 @@ export function Navigation() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={(e) => handleScrollToSection(e, link.href)}
+                  onClick={(e) => {
+                    if (link.href.startsWith('#')) {
+                      handleScrollToSection(e, link.href)
+                    }
+                  }}
                   className="relative text-muted-foreground font-medium transition-all text-[15px] duration-300 ease-out group overflow-hidden"
                   onMouseEnter={() => setHoveredLink(index)}
                   onMouseLeave={() => setHoveredLink(null)}
                 >
+                  {/* Main text - no scale or translate */}
                   <span className="relative z-10 block transition-colors duration-300 ease-out group-hover:text-[#52f3fe]">
                     {link.label}
                   </span>
 
+                  {/* Animated underline */}
                   <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#52f3fe] to-[#e223a5] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left" />
                 </Link>
               ))}
@@ -91,6 +111,7 @@ export function Navigation() {
         </div>
       </div>
 
+      {/* Mobile Navigation Button */}
       <div className="fixed top-4 right-4 z-50 lg:hidden">
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -115,16 +136,19 @@ export function Navigation() {
           </div>
         </button>
 
+        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="absolute top-16 right-0 bg-[#121212]/95 backdrop-blur-sm rounded-lg shadow-2xl border border-[#52f3fe]/20 py-4 px-6 min-w-[200px]">
             <div className="text-xl font-bold text-[#52f3fe] font-serif mb-4">Oyo Music Festival</div>
             <div className="space-y-3">
-              {navLinks.map((link) => (
+              {mobileNavLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={(e) => {
-                    handleScrollToSection(e, link.href)
+                    if (link.href.startsWith('#')) {
+                      handleScrollToSection(e, link.href)
+                    }
                     setIsMobileMenuOpen(false) 
                   }}
                   className="block text-muted-foreground font-medium text-[14px] hover:text-[#52f3fe] transition-colors duration-200 py-2"
