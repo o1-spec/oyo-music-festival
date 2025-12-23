@@ -59,6 +59,53 @@ export function EventHighlights() {
     const texts = textRefs.current;
     const images = imageRefs.current;
 
+    gsap.fromTo(
+      ".event-header",
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+          once: true, 
+        },
+      }
+    );
+
+    gsap.fromTo(
+      texts[0],
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 70%",
+          once: true,
+        },
+      }
+    );
+    gsap.fromTo(
+      images[0],
+      { opacity: 0, scale: 1.1 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 70%",
+          once: true,
+        },
+      }
+    );
+
     gsap.set(texts.slice(1), { opacity: 0, y: 50 });
     gsap.set(images.slice(1), { opacity: 0, scale: 1.1 });
 
@@ -107,7 +154,7 @@ export function EventHighlights() {
         <div className="absolute bottom-20 right-10 w-60 h-60 border border-[#e223a5]/20 rounded-full"></div>
       </div>
 
-      <div className="absolute top-28 left-1/2 transform -translate-x-1/2 z-10 text-center">
+      <div className="absolute top-28 left-1/2 transform -translate-x-1/2 z-10 text-center event-header">
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-2">
           Experience the Festival
         </h2>
@@ -151,7 +198,7 @@ export function EventHighlights() {
               ref={(el) => {
                 imageRefs.current[index] = el;
               }}
-              className="absolute top-1/4 bottom-1/4 left-0 right-30 p-1 bg-gradient-to-r from-[#52f3fe] to-[#e223a5] rounded-lg"
+              className="absolute top-1/4 bottom-1/4 left-0 right-20 p-1 bg-gradient-to-r from-[#52f3fe] to-[#e223a5] rounded-lg"
             >
               <div
                 className="w-full h-full bg-cover bg-center rounded-lg shadow-lg"
