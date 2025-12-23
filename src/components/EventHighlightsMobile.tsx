@@ -52,15 +52,13 @@ const highlights = [
 export function EventHighlightsMobile() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // ...existing code...
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       const items = gsap.utils.toArray<HTMLElement>(".highlight-item");
 
       gsap.set(items, {
         opacity: 0,
-        y: 50, // Reduced from 100 for quicker initial stack
+        y: (i) => i * 100,
         position: "absolute",
         top: 0,
         left: 0,
@@ -73,7 +71,7 @@ export function EventHighlightsMobile() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: `+=${items.length * 10}%`, // Reduced from 20% to 10% for faster animation
+          end: `+=${items.length * 10}%`, 
           scrub: true,
           pin: true,
         },
@@ -84,14 +82,14 @@ export function EventHighlightsMobile() {
 
         tl.to(items[i - 1], {
           opacity: 0,
-          y: -50,
-          duration: 0.5, // Reduced from 1 to 0.5 for snappier transitions
+          y: -100, 
+          ease: "power2.out", 
         }).to(
           item,
           {
             opacity: 1,
             y: 0,
-            duration: 0.5, // Reduced from 1 to 0.5
+            ease: "power2.out", 
           },
           "<"
         );
@@ -100,6 +98,7 @@ export function EventHighlightsMobile() {
 
     return () => ctx.revert();
   }, []);
+
 
   return (
     <section className="event-highlights-mobile py-20 px-6 bg-gradient-to-b from-[#0a0a0a] to-[#121212] relative overflow-hidden">
