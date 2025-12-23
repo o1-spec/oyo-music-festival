@@ -44,7 +44,12 @@ export function HeroSection() {
 
   const getBotResponse = (userMessage: string) => {
     const lowerMessage = userMessage.toLowerCase();
-    if (lowerMessage.includes("ticket") || lowerMessage.includes("buy") || lowerMessage.includes("price") || lowerMessage.includes("cost")) {
+    if (
+      lowerMessage.includes("ticket") ||
+      lowerMessage.includes("buy") ||
+      lowerMessage.includes("price") ||
+      lowerMessage.includes("cost")
+    ) {
       return "Tickets are available on our website! Early bird pricing ends soon—grab yours for the best deals. VIP, General Admission, and Student options available.";
     } else if (
       lowerMessage.includes("schedule") ||
@@ -158,7 +163,7 @@ export function HeroSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3, 
+        staggerChildren: 0.3,
         delayChildren: 0.2,
       },
     },
@@ -239,7 +244,7 @@ export function HeroSection() {
           </span>
         </div>
       </motion.div>
-      <div className="absolute top-10 right-4 md:top-16 md:right-6 z-20 flex gap-2 md:gap-4">
+      <div className="absolute top-10 left-4 md:top-16 md:right-6 z-40 flex gap-2 md:gap-4">
         <a
           href="https://instagram.com/oyomusicfestival"
           target="_blank"
