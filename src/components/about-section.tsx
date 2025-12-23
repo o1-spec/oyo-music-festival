@@ -56,7 +56,7 @@ export function AboutSection() {
     <div
       id="about"
       ref={sectionRef}
-      className="min-h-screen text-white flex items-center justify-center p-4 relative overflow-hidden bg-gradient-to-b from-[#121212] to-[#0a0a0a]"
+      className="min-h-screen text-white flex items-center justify-center pt-10 md:pt-4 p-4 relative overflow-hidden bg-gradient-to-b from-[#121212] to-[#0a0a0a]"
     >
       <div className="max-w-7xl w-full relative z-10">
         <div className="flex flex-col lg:flex-row gap-7 items-center">
@@ -119,7 +119,7 @@ export function AboutSection() {
               {highlights.map((highlight, index) => (
                 <div
                   key={index}
-                  className={`bg-white/5 backdrop-blur-sm w-[300px] md:w-[200px] rounded-xl p-4 py-4 border border-white/10 hover:bg-white/10 transition-all duration-1200 ease-out group hover:scale-105 hover:-translate-y-2 hover:shadow-2xl ${
+                  className={`bg-white/5 backdrop-blur-sm w-full md:w-[200px] rounded-xl p-4 py-4 border border-white/10 hover:bg-white/10 transition-all duration-1200 ease-out group hover:scale-105 hover:-translate-y-2 hover:shadow-2xl ${
                     isVisible
                       ? "opacity-100 translate-y-0 rotate-0"
                       : "opacity-0 translate-y-32 rotate-12"
@@ -182,7 +182,7 @@ export function AboutSection() {
                       : "none",
                   }}
                 >
-                  <span className="text-lg sm:text-xl">🎉</span>
+                  <div className="text-lg sm:text-xl">🎉</div>
                 </div> */}
               </div>
             </div>

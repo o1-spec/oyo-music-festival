@@ -21,8 +21,8 @@ function Loading() {
   }, []);
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-[#161616] relative overflow-hidden">
-      <div className="wave mb-8">
+    <main className="min-h-screen flex flex-col items-center justify-center bg-[#161616] relative overflow-hidden px-4">
+      <div className="wave mb-5 md:mb-8">
         <div className="bar bg-[#52f3fe]"></div>
         <div className="bar bg-[#e223a5]"></div>
         <div className="bar bg-[#52f3fe]"></div>
@@ -31,13 +31,13 @@ function Loading() {
         <div className="bar bg-[#e223a5]"></div>
         <div className="bar bg-[#52f3fe]"></div>
       </div>
-      <div className="w-64 h-2 bg-gray-700 rounded-full overflow-hidden mb-4">
+      <div className="w-full max-w-64 h-2 bg-gray-700 rounded-full overflow-hidden mb-3 md:mb-4">
         <div
           className="h-full bg-gradient-to-r from-[#52f3fe] to-[#e223a5] transition-all duration-300"
           style={{ width: `${progress}%` }}
         />
       </div>
-      <p className="text-lg bg-gradient-to-r from-[#52f3fe] to-[#e223a5] bg-clip-text text-transparent font-semibold animate-pulse">
+      <p className="text-base md:text-lg bg-gradient-to-r from-[#52f3fe] to-[#e223a5] bg-clip-text text-transparent font-semibold animate-pulse text-center">
         Igniting the Festival Spirit...
       </p>
     </main>
@@ -46,21 +46,21 @@ function Loading() {
 
 function ScrollingBanner() {
   return (
-    <div className="fixed overflow-hidden bg-gradient-to-r from-[#52f3fe]/10 to-[#e223a5]/10 border-b border-[#52f3fe]/20 py-2 z-50">
+    <div className="fixed top-0 left-0 right-0 overflow-hidden bg-gradient-to-r from-[#52f3fe]/10 to-[#e223a5]/10 border-b border-[#52f3fe]/20 py-1 md:py-2 z-50">
       <div className="flex w-max animate-marquee">
-        <span className="whitespace-nowrap px-4 text-sm font-medium text-white">
+        <span className="whitespace-nowrap px-2 md:px-4 text-xs md:text-sm font-medium text-white">
           🎉 Oyo Music Festival 2026 – Celebrating Yoruba Culture – March 2026 – University of Ibadan – Get Your Tickets Now!
         </span>
-        <span className="whitespace-nowrap px-4 text-sm font-medium text-white">
+        <span className="whitespace-nowrap px-2 md:px-4 text-xs md:text-sm font-medium text-white">
           🎉 Oyo Music Festival 2026 – Celebrating Yoruba Culture – March 2026 – University of Ibadan – Get Your Tickets Now!
         </span>
-        <span className="whitespace-nowrap px-4 text-sm font-medium text-white">
+        <span className="whitespace-nowrap px-2 md:px-4 text-xs md:text-sm font-medium text-white">
           🎉 Oyo Music Festival 2026 – Celebrating Yoruba Culture – March 2026 – University of Ibadan – Get Your Tickets Now!
         </span>
-        <span className="whitespace-nowrap px-4 text-sm font-medium text-white">
+        <span className="whitespace-nowrap px-2 md:px-4 text-xs md:text-sm font-medium text-white">
           🎉 Oyo Music Festival 2026 – Celebrating Yoruba Culture – March 2026 – University of Ibadan – Get Your Tickets Now!
         </span>
-        <span className="whitespace-nowrap px-4 text-sm font-medium text-white">
+        <span className="whitespace-nowrap px-2 md:px-4 text-xs md:text-sm font-medium text-white">
           🎉 Oyo Music Festival 2026 – Celebrating Yoruba Culture – March 2026 – University of Ibadan – Get Your Tickets Now!
         </span>
       </div>
@@ -77,6 +77,12 @@ function ScrollingBanner() {
 
         .animate-marquee {
           animation: marquee 60s linear infinite;
+        }
+
+        @media (max-width: 768px) {
+          .animate-marquee {
+            animation: marquee 120s linear infinite; /* Slower on mobile */
+          }
         }
       `}</style>
     </div>

@@ -27,7 +27,7 @@
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
+  --sided: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
   --sidebar-primary-foreground: oklch(0.985 0 0);
@@ -153,6 +153,20 @@
   50% { height: 60px; opacity: 1; }
 }
 
+@media (max-width: 768px) {
+  .wave {
+    gap: 4px;
+  }
+  .bar {
+    width: 6px; 
+    height: 30px; 
+  }
+  @keyframes wave {
+    0%, 100% { height: 15px; opacity: 0.5; } 
+    50% { height: 45px; opacity: 1; }
+  }
+}
+
 .floating-threads {
   position: fixed;
   top: 0;
@@ -186,8 +200,6 @@
 .fade-in {
   animation: fadeIn 1s ease-out;
 }
-
-/* ...existing code... */
 
 .bg-gradient-radial {
   background: radial-gradient(circle at center, rgba(82, 243, 254, 0.1) 0%, transparent 70%);

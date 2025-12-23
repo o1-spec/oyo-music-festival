@@ -18,7 +18,9 @@ export function CustomCursor() {
     const handleMouseDown = () => setIsClicking(true);
     const handleMouseUp = () => setIsClicking(false);
 
-    const interactiveElements = document.querySelectorAll("a, button, [role='button']");
+    const interactiveElements = document.querySelectorAll(
+      "a, button, [role='button']"
+    );
     interactiveElements.forEach((el) => {
       el.addEventListener("mouseenter", handleMouseEnter);
       el.addEventListener("mouseleave", handleMouseLeave);
@@ -39,16 +41,18 @@ export function CustomCursor() {
     };
   }, []);
 
-  const size = isClicking ? 12 : isHovering ? 8 : 6; 
+  const size = isClicking ? 12 : isHovering ? 8 : 6;
   const offset = size / 2;
 
   return (
     <div
-      className={`fixed top-0 left-0 pointer-events-none z-50 transition-all duration-150 ease-out ${
+      className={`hidden md:block fixed top-0 left-0 pointer-events-none z-50 transition-all duration-150 ease-out ${
         isClicking ? "w-12 h-12" : isHovering ? "w-8 h-8" : "w-6 h-6"
       } bg-gradient-to-r from-[#52f3fe] to-[#e223a5] rounded-full shadow-lg`}
       style={{
-        transform: `translate(${position.x - offset}px, ${position.y - offset}px)`,
+        transform: `translate(${position.x - offset}px, ${
+          position.y - offset
+        }px)`,
       }}
     />
   );
