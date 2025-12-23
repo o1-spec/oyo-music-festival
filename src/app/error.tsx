@@ -1,12 +1,22 @@
 "use client"
 
+import { useEffect } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Home } from 'lucide-react'
+import { RefreshCw, Home, AlertTriangle } from 'lucide-react'
 
-// ...existing imports...
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string }
+  reset: () => void
+}) {
+  useEffect(() => {
+    // Optionally log the error to an error reporting service
+    console.error(error)
+  }, [error])
 
-export default function NotFound() {
   return (
     <div className="min-h-screen bg-[#121212] text-white flex items-center justify-center px-4 py-20 pt-32">
       <div className="text-center max-w-md mx-auto">
@@ -16,7 +26,8 @@ export default function NotFound() {
           animate={{ scale: 1, rotate: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          404
+          <AlertTriangle className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto mb-4" />
+          Oops!
         </motion.div>
 
         <motion.h1
@@ -25,7 +36,7 @@ export default function NotFound() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          Oyo Music Festival
+          Something Went Wrong
         </motion.h1>
 
         <motion.p
@@ -34,7 +45,7 @@ export default function NotFound() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          Oops! This page seems to have wandered off like a lost drumbeat. Let's get you back to the rhythm.
+          We're experiencing some technical difficulties. Don't worry, our team is on it. Try refreshing or head back home.
         </motion.p>
 
         <motion.div
@@ -43,19 +54,19 @@ export default function NotFound() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
         >
+          <button
+            onClick={reset}
+            className="bg-gradient-to-r from-[#52f3fe] to-[#e223a5] text-black px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-[#52f3fe]/50 flex items-center gap-2 text-sm sm:text-base"
+          >
+            <RefreshCw className="w-4 h-4 sm:w-5 sm:h-5" />
+            Try Again
+          </button>
           <Link href="/">
-            <button className="bg-gradient-to-r from-[#52f3fe] to-[#e223a5] text-black px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-[#52f3fe]/50 flex items-center gap-2 text-sm sm:text-base">
+            <button className="border border-[#52f3fe]/50 text-[#52f3fe] px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold hover:bg-[#52f3fe]/10 transition-colors duration-300 flex items-center gap-2 text-sm sm:text-base">
               <Home className="w-4 h-4 sm:w-5 sm:h-5" />
               Back to Home
             </button>
           </Link>
-          <button
-            onClick={() => window.history.back()}
-            className="border border-[#52f3fe]/50 text-[#52f3fe] px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold hover:bg-[#52f3fe]/10 transition-colors duration-300 flex items-center gap-2 text-sm sm:text-base"
-          >
-            <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-            Go Back
-          </button>
         </motion.div>
 
         <motion.div
