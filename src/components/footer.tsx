@@ -57,7 +57,7 @@ export function Footer() {
                 >
                   Sign Up
                 </button>
-                <p className="text-xs text-[#cdb9d9]">
+                <p className="text-xs text-[#FFFFFF]/70">
                   By signing up you consent to receive email updates. Unsubscribe anytime.
                 </p>
               </div>
