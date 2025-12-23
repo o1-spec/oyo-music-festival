@@ -31,7 +31,7 @@ export function Navigation() {
   const navLinks = [
     { href: '#hero', label: 'Home' },
     { href: '#about', label: 'About' },
-    { href: '#events', label: 'Events' },
+    { href: '#highlights', label: 'Events' },
     { href: '#guests', label: 'Guests' },
     { href: '#sponsors', label: 'Sponsors' },
   ]

@@ -10,6 +10,7 @@ import { SponsorsSection } from "@/components/sponsor-section";
 import { Navigation } from "@/components/navigation";
 import { motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
+import { EventHighlightsMobile } from "@/components/EventHighlightsMobile";
 
 function Loading() {
   const [progress, setProgress] = useState(0);
@@ -49,19 +50,24 @@ function ScrollingBanner() {
     <div className="fixed top-0 left-0 right-0 overflow-hidden bg-gradient-to-r from-[#52f3fe]/10 to-[#e223a5]/10 border-b border-[#52f3fe]/20 py-1 md:py-2 z-50">
       <div className="flex w-max animate-marquee">
         <span className="whitespace-nowrap px-2 md:px-4 text-xs md:text-sm font-medium text-white">
-          🎉 Oyo Music Festival 2026 – Celebrating Yoruba Culture – March 2026 – University of Ibadan – Get Your Tickets Now!
+          🎉 Oyo Music Festival 2026 – Celebrating Yoruba Culture – March 2026 –
+          University of Ibadan – Get Your Tickets Now!
         </span>
         <span className="whitespace-nowrap px-2 md:px-4 text-xs md:text-sm font-medium text-white">
-          🎉 Oyo Music Festival 2026 – Celebrating Yoruba Culture – March 2026 – University of Ibadan – Get Your Tickets Now!
+          🎉 Oyo Music Festival 2026 – Celebrating Yoruba Culture – March 2026 –
+          University of Ibadan – Get Your Tickets Now!
         </span>
         <span className="whitespace-nowrap px-2 md:px-4 text-xs md:text-sm font-medium text-white">
-          🎉 Oyo Music Festival 2026 – Celebrating Yoruba Culture – March 2026 – University of Ibadan – Get Your Tickets Now!
+          🎉 Oyo Music Festival 2026 – Celebrating Yoruba Culture – March 2026 –
+          University of Ibadan – Get Your Tickets Now!
         </span>
         <span className="whitespace-nowrap px-2 md:px-4 text-xs md:text-sm font-medium text-white">
-          🎉 Oyo Music Festival 2026 – Celebrating Yoruba Culture – March 2026 – University of Ibadan – Get Your Tickets Now!
+          🎉 Oyo Music Festival 2026 – Celebrating Yoruba Culture – March 2026 –
+          University of Ibadan – Get Your Tickets Now!
         </span>
         <span className="whitespace-nowrap px-2 md:px-4 text-xs md:text-sm font-medium text-white">
-          🎉 Oyo Music Festival 2026 – Celebrating Yoruba Culture – March 2026 – University of Ibadan – Get Your Tickets Now!
+          🎉 Oyo Music Festival 2026 – Celebrating Yoruba Culture – March 2026 –
+          University of Ibadan – Get Your Tickets Now!
         </span>
       </div>
 
@@ -89,10 +95,10 @@ function ScrollingBanner() {
   );
 }
 
-
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [showTop, setShowTop] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 3000);
@@ -109,9 +115,18 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   if (loading) {
     return <Loading />;
   }
+
+  // ...existing code...
 
   return (
     <main className="min-h-screen relative bg-[#121212] text-white fade-in">
@@ -121,10 +136,18 @@ export default function Home() {
       <div id="about">
         <AboutSection />
       </div>
-      <EventHighlights />
-      <KeyGuests />
-      <SponsorsSection />
-      <Footer />
+      <div id="highlights">
+        {isMobile ? <EventHighlightsMobile /> : <EventHighlights />}
+      </div>
+      <div id="guests">
+        <KeyGuests />
+      </div>
+      <div id="sponsors">
+        <SponsorsSection />
+      </div>
+      <div id="footer">
+        <Footer />
+      </div>
       {showTop && (
         <motion.button
           onClick={scrollToTop}
