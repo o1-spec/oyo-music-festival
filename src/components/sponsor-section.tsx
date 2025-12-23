@@ -8,12 +8,11 @@ interface Sponsor {
 const sponsors: Sponsor[] = [
   { name: "Oyo State Government", logo: "/images/oyo-state.png" },
   { name: "University of Ibadan", logo: "/images/university-ibadan.jpeg" },
-  { name: "Imperial 1629", logo: undefined }, // Removed logo since it doesn't exist
+  { name: "Imperial 1629", logo: undefined }, 
   { name: "Partner Company", logo: "/images/corporate-partner-logo.jpg" },
 ];
 
 export function SponsorsSection() {
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
