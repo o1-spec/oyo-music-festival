@@ -7,7 +7,7 @@ export default function Terms() {
   return (
     <div className="min-h-screen bg-[#121212] text-white">
       {/* Hero Section */}
-      <section className="relative py-20 pb-10 px-4 text-center overflow-hidden">
+      <section className="relative py-20 pb-4 pt-32 px-4 text-center overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-32 h-32 border border-[#52f3fe]/30 rounded-full animate-pulse"></div>
           <div className="absolute bottom-10 right-10 w-48 h-48 border border-[#e223a5]/30 rounded-full animate-pulse"></div>
