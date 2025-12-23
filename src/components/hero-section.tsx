@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, MessageCircle, X, Send } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -13,6 +13,12 @@ export function HeroSection() {
   });
 
   const [chatOpen, setChatOpen] = useState(false);
+  const [messages, setMessages] = useState([
+    {
+      text: "Hi! How can we help you with questions about the Oyo Music Festival?",
+      sender: "bot",
+    },
+  ]);
 
   useEffect(() => {
     const targetDate = new Date("2026-03-01T00:00:00");
@@ -36,14 +42,65 @@ export function HeroSection() {
     }
   };
 
-  // Define animation variants
+  const getBotResponse = (userMessage: string) => {
+    const lowerMessage = userMessage.toLowerCase();
+    if (lowerMessage.includes("ticket") || lowerMessage.includes("buy")) {
+      return "Tickets are available on our website! Early bird pricing ends soon—grab yours for the best deals.";
+    } else if (
+      lowerMessage.includes("schedule") ||
+      lowerMessage.includes("time")
+    ) {
+      return "The festival runs for 2 days in March 2026 at the University of Ibadan. Check our schedule page for full details!";
+    } else if (
+      lowerMessage.includes("location") ||
+      lowerMessage.includes("where")
+    ) {
+      return "We're at the University of Ibadan in Oyo State, Nigeria. Easy to access with great parking!";
+    } else if (
+      lowerMessage.includes("speaker") ||
+      lowerMessage.includes("guest")
+    ) {
+      return "We have distinguished guests like Gov. Seyi Makinde and Prof. Kayode Adebowale. Meet them all on our site!";
+    } else if (
+      lowerMessage.includes("food") ||
+      lowerMessage.includes("vendor")
+    ) {
+      return "Enjoy authentic Yoruba cuisine and artisan vendors—pounded yam, egusi soup, and handmade crafts!";
+    } else {
+      return "Thank you for your question! We'll get back to you soon, or check our FAQ for more info.";
+    }
+  };
+
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  const handleSendMessage = () => {
+    const input = document.querySelector(
+      'input[placeholder="Type your question..."]'
+    ) as HTMLInputElement;
+    const messageText = input.value.trim();
+    if (!messageText) return;
+
+    setMessages((prev) => [...prev, { text: messageText, sender: "user" }]);
+    input.value = "";
+
+    const botResponse = getBotResponse(messageText);
+
+    setTimeout(() => {
+      setMessages((prev) => [...prev, { text: botResponse, sender: "bot" }]);
+    }, 1000);
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3, // Stagger each child by 0.3s
-        delayChildren: 0.2, // Initial delay
+        staggerChildren: 0.3, 
+        delayChildren: 0.2,
       },
     },
   };
@@ -336,10 +393,9 @@ export function HeroSection() {
         <MessageCircle className="w-6 h-6" />
       </motion.button>
 
-      {/* Chat Box */}
       {chatOpen && (
         <motion.div
-          className="fixed bottom-20 right-4 md:right-6 z-50 bg-[#0a0a0a] border border-[#52f3fe]/30 rounded-lg shadow-lg p-4 w-80 max-w-[90vw]"
+          className="fixed bottom-20 right-4 md:right-6 z-50 bg-[#0a0a0a] border border-[#52f3fe]/30 rounded-lg shadow-lg p-4 w-80 max-w-[90vw] flex flex-col"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
@@ -354,19 +410,32 @@ export function HeroSection() {
               <X className="w-5 h-5" />
             </button>
           </div>
-          <div className="space-y-2 mb-4 max-h-40 overflow-y-auto">
-            <div className="text-sm text-muted-foreground">
-              Hi! How can we help you with questions about the Oyo Music
-              Festival?
-            </div>
+          <div className="space-y-2 mb-4 max-h-40 overflow-y-auto flex-1">
+            {messages.map((msg, index) => (
+              <div
+                key={index}
+                className={`text-sm p-2 rounded-md max-w-[70%] ${
+                  msg.sender === "user"
+                    ? "bg-[#52f3fe] text-black self-end ml-auto"
+                    : "bg-[#52f3fe]/10 text-white self-start"
+                }`}
+              >
+                {msg.text}
+              </div>
+            ))}
+            <div ref={messagesEndRef} />
           </div>
           <div className="flex gap-2">
             <input
               type="text"
               placeholder="Type your question..."
               className="flex-1 px-3 py-2 rounded-md bg-[#52f3fe]/5 border border-[#52f3fe]/30 text-white placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#52f3fe]/50"
+              onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
             />
-            <button className="px-3 py-2 bg-[#52f3fe] text-black rounded-md hover:bg-[#e223a5] transition-colors">
+            <button
+              onClick={handleSendMessage}
+              className="px-3 py-2 bg-[#52f3fe] text-black rounded-md hover:bg-[#e223a5] transition-colors"
+            >
               <Send className="w-4 h-4" />
             </button>
           </div>
