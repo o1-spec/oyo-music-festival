@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { Facebook, Twitter, Instagram, Youtube, Mail } from "lucide-react";
 import { motion } from "framer-motion";
@@ -77,7 +79,7 @@ export function Footer() {
                 <li><a href="#about" className="hover:text-[#52f3fe]">About</a></li>
                 <li><a href="#schedule" className="hover:text-[#52f3fe]">Schedule</a></li>
                 <li><a href="#tickets" className="hover:text-[#52f3fe]">Tickets</a></li>
-                <li><a href="#contact" className="hover:text-[#52f3fe]">Contact</a></li>
+                <li><a href="/contact" className="hover:text-[#52f3fe]">Contact</a></li>
               </ul>
             </div>
 
