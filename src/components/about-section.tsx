@@ -146,19 +146,19 @@ export function AboutSection() {
 
           <div className="space-y-6 sm:space-y-8 w-full lg:basis-[50%] lg:pl-6 xl:pl-10 order-1 lg:order-2">
             <div
-              className={`bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/10 flex justify-center transition-all duration-2200 ease-out ${
+              className={`bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/10 flex justify-center transition-all duration-1200 ease-out ${
                 isVisible
                   ? "opacity-100 scale-100 rotate-0"
                   : "opacity-0 scale-50 rotate-45"
               }`}
-              style={{ transitionDelay: "0.8s" }}
+              style={{ transitionDelay: "0.6s" }}
             >
               <div className="relative group max-w-sm w-full">
                 <div
                   className={`absolute inset-0 bg-[#52f3fe]/30 rounded-xl blur-xl transition-all duration-1200 ${
                     isVisible ? "opacity-70" : "opacity-0"
                   } group-hover:opacity-100 group-hover:scale-110`}
-                  style={{ transitionDelay: "1.6s" }}
+                  style={{ transitionDelay: "1.0s" }}
                 ></div>
 
                 <div className="relative bg-white/10 backdrop-blur-sm rounded-xl p-2 border border-white/20">

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export function Footer() {
   const container = { hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } };
   return (
-    <footer className="relative border-t border-[#52f3fe]/20 bg-gradient-to-b from-[#0a0a0a] to-[#000000] text-white overflow-hidden">
+    <footer className="relative border-t border-[#52f3fe]/20 bg-gradient-to-b from-[#0a0a0a] to-[#000000] text-white overflow-hidden py-10 md:py-16">
       <div className="pointer-events-none absolute inset-0 opacity-6 mix-blend-overlay">
         <svg className="w-full h-full" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200">
           <defs>
@@ -135,12 +135,12 @@ export function Footer() {
       </div>
 
       {/* Help floating button like image */}
-      <button
+      {/* <button
         aria-label="Help"
         className="fixed right-6 bottom-6 bg-gradient-to-r from-[#52f3fe] to-[#e223a5] text-black rounded-full px-4 py-2 shadow-lg hover:scale-105 transition-transform z-50"
       >
         Help
-      </button>
+      </button> */}
     </footer>
   );
 }
