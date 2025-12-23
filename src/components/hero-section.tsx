@@ -3,8 +3,10 @@ import { Calendar, MapPin, MessageCircle, X, Send } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export function HeroSection() {
+  const router = useRouter();
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -420,12 +422,14 @@ export function HeroSection() {
           <Button
             size="lg"
             className="text-base xs:text-lg px-6 xs:px-8 py-4 xs:py-6 h-auto font-semibold hover:scale-105 hover:shadow-glow transition-all duration-300"
+            onClick={() => router.push('/tickets')}
           >
             Get Tickets
           </Button>
           <Button
             size="lg"
             variant="outline"
+            onClick={() => router.push('/partner')}
             className="text-base xs:text-lg px-6 xs:px-8 py-4 xs:py-6 h-auto font-semibold border-primary/30 hover:bg-primary/10 hover:scale-105 hover:shadow-glow transition-all duration-300"
           >
             Partner With Us

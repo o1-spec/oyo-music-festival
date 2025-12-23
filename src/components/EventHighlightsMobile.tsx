@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,7 +52,7 @@ const highlights = [
 
 export function EventHighlightsMobile() {
   const containerRef = useRef<HTMLDivElement>(null);
-
+  const router = useRouter();
   useEffect(() => {
     const ctx = gsap.context(() => {
       const items = gsap.utils.toArray<HTMLElement>(".highlight-item");
@@ -71,7 +72,7 @@ export function EventHighlightsMobile() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: `+=${items.length * 10}%`, 
+          end: `+=${items.length * 10}%`,
           scrub: true,
           pin: true,
         },
@@ -82,14 +83,14 @@ export function EventHighlightsMobile() {
 
         tl.to(items[i - 1], {
           opacity: 0,
-          y: -100, 
-          ease: "power2.out", 
+          y: -100,
+          ease: "power2.out",
         }).to(
           item,
           {
             opacity: 1,
             y: 0,
-            ease: "power2.out", 
+            ease: "power2.out",
           },
           "<"
         );
@@ -98,7 +99,6 @@ export function EventHighlightsMobile() {
 
     return () => ctx.revert();
   }, []);
-
 
   return (
     <section className="event-highlights-mobile py-20 px-6 bg-gradient-to-b from-[#0a0a0a] to-[#121212] relative overflow-hidden">
@@ -125,13 +125,13 @@ export function EventHighlightsMobile() {
       <div
         ref={containerRef}
         className="relative z-10"
-        style={{ position: "relative", height: "100vh" }} 
+        style={{ position: "relative", height: "100vh" }}
       >
         {highlights.map((highlight, index) => (
           <div
             key={index}
             className="highlight-item flex flex-col items-center gap-6 p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-[#52f3fe]/20 hover:border-[#52f3fe]/50 transition-all duration-500 hover:bg-white/10 hover:shadow-2xl hover:shadow-[#52f3fe]/20"
-            style={{ position: "absolute", top: 0, width: "100%" }} 
+            style={{ position: "absolute", top: 0, width: "100%" }}
           >
             <div
               className="w-full h-72 bg-cover bg-center rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
@@ -153,8 +153,8 @@ export function EventHighlightsMobile() {
           </div>
         ))}
       </div>
-     <motion.div
-        className="text-center mt-8 relative z-10" 
+      <motion.div
+        className="text-center mt-8 relative z-10"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{
@@ -164,7 +164,10 @@ export function EventHighlightsMobile() {
         }}
         viewport={{ once: true }}
       >
-        <button className="bg-gradient-to-r from-[#52f3fe] to-[#e223a5] text-black px-8 py-4 rounded-xl font-semibold hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-[#52f3fe]/50 text-sm md:text-base">
+        <button
+          onClick={() => router.push("/schedule")}
+          className="bg-gradient-to-r from-[#52f3fe] to-[#e223a5] text-black px-8 py-4 rounded-xl font-semibold hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-[#52f3fe]/50 text-sm md:text-base"
+        >
           Explore the Schedule
         </button>
       </motion.div>

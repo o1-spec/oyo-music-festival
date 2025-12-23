@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 interface Sponsor {
   name: string;
@@ -13,6 +14,7 @@ const sponsors: Sponsor[] = [
 ];
 
 export function SponsorsSection() {
+  const router = useRouter();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -89,7 +91,7 @@ export function SponsorsSection() {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <button className="bg-gradient-to-r from-[#52f3fe] to-[#e223a5] text-black px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-[#52f3fe]/50 text-sm md:text-base">
+          <button onClick={() => router.push('/sponsors')} className="bg-gradient-to-r from-[#52f3fe] to-[#e223a5] text-black px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-[#52f3fe]/50 text-sm md:text-base">
             Become a Sponsor
           </button>
         </motion.div>
