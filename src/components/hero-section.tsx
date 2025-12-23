@@ -54,7 +54,7 @@ export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
       <motion.div
-        className="absolute bottom-10 left-10 opacity-60 z-0"
+        className="fixed bottom-10 left-10 opacity-60 z-40"
         initial={{ x: -200, opacity: 0 }}
         animate={{ x: 0, opacity: 0.6 }}
         transition={{ duration: 1, delay: 1.5, ease: "easeOut" }}
@@ -88,7 +88,7 @@ export function HeroSection() {
         </div>
       </motion.div>
       <motion.div
-        className="absolute bottom-10 right-10 opacity-60 z-0"
+        className="fixed bottom-10 right-10 opacity-60 z-40"
         initial={{ x: 200, opacity: 0 }}
         animate={{ x: 0, opacity: 0.6 }}
         transition={{ duration: 1, delay: 2, ease: "easeOut" }}

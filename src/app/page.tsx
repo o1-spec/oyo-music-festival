@@ -76,7 +76,7 @@ function ScrollingBanner() {
         }
 
         .animate-marquee {
-          animation: marquee 40s linear infinite;
+          animation: marquee 60s linear infinite;
         }
       `}</style>
     </div>

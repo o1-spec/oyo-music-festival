@@ -81,8 +81,8 @@ export function AboutSection() {
                 }`}
                 style={{ transitionDelay: "0.8s" }}
               />
-              <span
-                className={`font-semibold text-xl sm:text-2xl lg:text-[26px] transition-all duration-1600 ease-out ${
+             <span
+                className={`font-semibold text-xl sm:text-2xl lg:text-[26px] transition-all duration-1600 ease-out bg-gradient-to-r from-[#52f3fe] to-[#e223a5] bg-clip-text text-transparent ${
                   isVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-10"
