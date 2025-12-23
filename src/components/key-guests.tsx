@@ -11,7 +11,7 @@ const guests: Guest[] = [
   {
     name: "Gov. Seyi Makinde",
     role: "Executive Governor of Oyo State",
-    image: "/governor-seyi-makinde-portrait.jpg",
+    image: "/images/seyi-makinde.webp",
   },
   {
     name: "Prof. Kayode Adebowale",
@@ -21,12 +21,12 @@ const guests: Guest[] = [
   {
     name: "Prof. Siyan Oyeweso",
     role: "Distinguished Academic",
-    image: "/professor-siyan-oyeweso-portrait.jpg",
+    image: "/images/sisan-awofeso.webp",
   },
   {
     name: "Tunde Kilani",
     role: "Renowned Filmmaker",
-    image: "/tunde-kilani-filmmaker-portrait.jpg",
+    image: "/images/tunde-kilani.webp",
   },
 ];
 
@@ -56,7 +56,7 @@ export function KeyGuests() {
         <div className="absolute bottom-10 left-10 w-48 h-48 border border-[#52f3fe]/20 rounded-full"></div>
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -73,7 +73,7 @@ export function KeyGuests() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -82,7 +82,7 @@ export function KeyGuests() {
           {guests.map((guest, index) => (
             <motion.div
               key={index}
-              className="flex flex-col items-center text-center gap-4 group p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-[#52f3fe]/20 hover:border-[#52f3fe]/50 transition-all duration-500 hover:bg-white/10 hover:scale-105 hover:shadow-2xl hover:shadow-[#52f3fe]/20"
+              className="flex flex-col items-center text-center gap-4 group p-6 py-10 rounded-xl bg-white/5 backdrop-blur-sm border border-[#52f3fe]/20 hover:border-[#52f3fe]/50 transition-all duration-500 hover:bg-white/10 hover:scale-105 hover:shadow-2xl hover:shadow-[#52f3fe]/20"
               variants={itemVariants}
               transition={{ duration: 0.6, ease: "easeOut" }}
               whileHover={{ y: -10 }}

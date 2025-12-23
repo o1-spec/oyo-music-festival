@@ -65,7 +65,7 @@ export function EventHighlights() {
     ScrollTrigger.create({
       trigger: section,
       start: "top top",
-      end: "+=800vh",
+      end: "+=1600vh",
       pin: true,
       scrub: 0.5,
       onUpdate: (self) => {
