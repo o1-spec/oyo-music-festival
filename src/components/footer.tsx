@@ -118,7 +118,7 @@ export function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 pt-6 md:pt-10">
           <div className="flex items-center gap-3 md:gap-4">
-            <Image src="/images/festival-icon.png" width={120} height={40} alt="logo" className="md:w-[140px] md:h-[48px]" />
+            <Image src="/images/festival-icon.png" width={120} height={200} alt="logo" className="md:w-[50px] md:h-[55px]" />
             <div className="hidden md:block text-[#FFFFFF] text-xs md:text-sm">
               &copy; 2025 Oyo Music Festival
               <div className="mt-1"><a className="hover:text-[#52f3fe]" href="#">Made by Project</a></div>

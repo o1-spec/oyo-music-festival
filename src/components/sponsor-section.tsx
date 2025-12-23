@@ -6,10 +6,10 @@ interface Sponsor {
 }
 
 const sponsors: Sponsor[] = [
-  { name: "Oyo State Government", logo: "/oyo-state-government-logo.jpg" },
-  { name: "University of Ibadan", logo: "/university-of-ibadan-logo.jpg" },
-  { name: "Imperial 1629", logo: "/imperial-1629-media-logo.jpg" },
-  { name: "Partner Company", logo: "/corporate-partner-logo.jpg" },
+  { name: "Oyo State Government", logo: "/images/oyo-state.png" },
+  { name: "University of Ibadan", logo: "/images/university-ibadan.jpeg" },
+  { name: "Imperial 1629", logo: undefined }, // Removed logo since it doesn't exist
+  { name: "Partner Company", logo: "/images/corporate-partner-logo.jpg" },
 ];
 
 export function SponsorsSection() {
@@ -31,8 +31,7 @@ export function SponsorsSection() {
   };
 
   return (
-    <section className="py-24 px-4 bg-gradient-to-b from-[#121212] to-[#0a0a0a] relative overflow-hidden">
-      {/* Background Elements */}
+    <section className="py-16 px-4 pb-28 bg-gradient-to-b from-[#121212] to-[#0a0a0a] relative overflow-hidden"> 
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-40 h-40 border border-[#52f3fe]/20 rounded-full"></div>
         <div className="absolute bottom-20 right-10 w-60 h-60 border border-[#e223a5]/20 rounded-full"></div>
@@ -40,7 +39,7 @@ export function SponsorsSection() {
 
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-8"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -55,7 +54,7 @@ export function SponsorsSection() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center justify-items-center" 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -64,23 +63,28 @@ export function SponsorsSection() {
           {sponsors.map((sponsor, index) => (
             <motion.div
               key={index}
-              className="flex items-center justify-center p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-[#52f3fe]/20 hover:border-[#52f3fe]/50 transition-all duration-500 hover:bg-white/10 hover:scale-110 hover:shadow-2xl hover:shadow-[#52f3fe]/20 group"
+              className="flex items-center justify-center p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-[#52f3fe]/20 hover:border-[#52f3fe]/50 transition-all duration-500 hover:bg-white/10 hover:scale-110 hover:shadow-2xl hover:shadow-[#52f3fe]/20 group" 
               variants={itemVariants}
               transition={{ duration: 0.6, ease: "easeOut" }}
               whileHover={{ rotate: 5 }}
             >
-              <img
-                src={sponsor.logo || "/placeholder.svg"}
-                alt={sponsor.name}
-                className="h-16 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110"
-              />
+              {sponsor.logo ? (
+                <img
+                  src={sponsor.logo}
+                  alt={sponsor.name}
+                  className="h-16 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110"
+                />
+              ) : (
+                <p className="text-white text-lg font-semibold group-hover:text-[#52f3fe] transition-colors duration-300">
+                  {sponsor.name}
+                </p>
+              )}
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Call to Action */}
         <motion.div
-          className="text-center mt-16"
+          className="text-center mt-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
