@@ -44,30 +44,89 @@ export function HeroSection() {
 
   const getBotResponse = (userMessage: string) => {
     const lowerMessage = userMessage.toLowerCase();
-    if (lowerMessage.includes("ticket") || lowerMessage.includes("buy")) {
-      return "Tickets are available on our website! Early bird pricing ends soon—grab yours for the best deals.";
+    if (lowerMessage.includes("ticket") || lowerMessage.includes("buy") || lowerMessage.includes("price") || lowerMessage.includes("cost")) {
+      return "Tickets are available on our website! Early bird pricing ends soon—grab yours for the best deals. VIP, General Admission, and Student options available.";
     } else if (
       lowerMessage.includes("schedule") ||
-      lowerMessage.includes("time")
+      lowerMessage.includes("time") ||
+      lowerMessage.includes("when") ||
+      lowerMessage.includes("date")
     ) {
-      return "The festival runs for 2 days in March 2026 at the University of Ibadan. Check our schedule page for full details!";
+      return "The festival runs for 2 days in March 2026 at the University of Ibadan. Day 1: Live performances and speakers. Day 2: Cultural games and art exhibitions. Check our schedule page for full details!";
     } else if (
       lowerMessage.includes("location") ||
-      lowerMessage.includes("where")
+      lowerMessage.includes("where") ||
+      lowerMessage.includes("venue") ||
+      lowerMessage.includes("address")
     ) {
-      return "We're at the University of Ibadan in Oyo State, Nigeria. Easy to access with great parking!";
+      return "We're at the University of Ibadan in Oyo State, Nigeria. Easy to access with great parking! Use Google Maps for directions or take public transport from Ibadan city center.";
     } else if (
       lowerMessage.includes("speaker") ||
-      lowerMessage.includes("guest")
+      lowerMessage.includes("guest") ||
+      lowerMessage.includes("performer") ||
+      lowerMessage.includes("artist")
     ) {
-      return "We have distinguished guests like Gov. Seyi Makinde and Prof. Kayode Adebowale. Meet them all on our site!";
+      return "We have distinguished guests like Gov. Seyi Makinde and Prof. Kayode Adebowale, plus world-class artists honoring Yoruba music traditions. Meet them all on our site!";
     } else if (
       lowerMessage.includes("food") ||
-      lowerMessage.includes("vendor")
+      lowerMessage.includes("vendor") ||
+      lowerMessage.includes("eat") ||
+      lowerMessage.includes("drink")
     ) {
-      return "Enjoy authentic Yoruba cuisine and artisan vendors—pounded yam, egusi soup, and handmade crafts!";
+      return "Enjoy authentic Yoruba cuisine and artisan vendors—pounded yam, egusi soup, fresh beverages, and handmade crafts! Vegetarian options available.";
+    } else if (
+      lowerMessage.includes("highlight") ||
+      lowerMessage.includes("what to expect") ||
+      lowerMessage.includes("experience")
+    ) {
+      return "Expect electrifying live performances, art exhibitions, cultural games, and interactive sessions celebrating Yoruba heritage. It's a mix of music, art, and community fun!";
+    } else if (
+      lowerMessage.includes("activity") ||
+      lowerMessage.includes("what to do") ||
+      lowerMessage.includes("event")
+    ) {
+      return "Join live performances, art exhibitions, cultural games like Ewi poetry and DJ battles, food vendors, and Q&A sessions with speakers. Something for everyone!";
+    } else if (
+      lowerMessage.includes("contact") ||
+      lowerMessage.includes("help") ||
+      lowerMessage.includes("support") ||
+      lowerMessage.includes("email")
+    ) {
+      return "Contact us at info@oyomusicfestival.com or call +234-XXX-XXX-XXXX. We're here to help with any questions!";
+    } else if (
+      lowerMessage.includes("accommodation") ||
+      lowerMessage.includes("hotel") ||
+      lowerMessage.includes("stay") ||
+      lowerMessage.includes("lodging")
+    ) {
+      return "Ibadan has plenty of hotels and guesthouses near the University. Book early! We can recommend options like Premier Hotel or local stays.";
+    } else if (
+      lowerMessage.includes("age") ||
+      lowerMessage.includes("kid") ||
+      lowerMessage.includes("child") ||
+      lowerMessage.includes("family")
+    ) {
+      return "The festival is family-friendly! All ages welcome, but some areas may have age restrictions for late-night events. Check our site for details.";
+    } else if (
+      lowerMessage.includes("bring") ||
+      lowerMessage.includes("what to wear") ||
+      lowerMessage.includes("prepare")
+    ) {
+      return "Wear comfortable Yoruba-inspired attire, bring water, sunscreen, and cash for vendors. No outside food/drinks allowed—enjoy our vendors!";
+    } else if (
+      lowerMessage.includes("transport") ||
+      lowerMessage.includes("parking") ||
+      lowerMessage.includes("get there")
+    ) {
+      return "Drive or take public transport. Free parking at the University. Airport shuttles available from Ibadan Airport.";
+    } else if (
+      lowerMessage.includes("about") ||
+      lowerMessage.includes("what is") ||
+      lowerMessage.includes("festival")
+    ) {
+      return "The Oyo Music Festival celebrates Yoruba culture through music, art, and entertainment. A 2-day event in March 2026 at University of Ibadan!";
     } else {
-      return "Thank you for your question! We'll get back to you soon, or check our FAQ for more info.";
+      return "Thank you for your question! We'll get back to you soon, or check our FAQ for more info. Ask about tickets, schedule, or highlights!";
     }
   };
 

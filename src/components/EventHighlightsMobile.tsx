@@ -1,5 +1,10 @@
 import { Mic2, Palette, Users, Sparkles, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const highlights = [
   {
@@ -45,31 +50,65 @@ const highlights = [
 ];
 
 export function EventHighlightsMobile() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3, 
-        delayChildren: 0.2,
-      },
-    },
-  };
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as any } },
-  };
+  // ...existing code...
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const items = gsap.utils.toArray<HTMLElement>(".highlight-item");
+
+      gsap.set(items, {
+        opacity: 0,
+        y: 50, // Reduced from 100 for quicker initial stack
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+      });
+
+      gsap.set(items[0], { opacity: 1, y: 0 });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: `+=${items.length * 10}%`, // Reduced from 20% to 10% for faster animation
+          scrub: true,
+          pin: true,
+        },
+      });
+
+      items.forEach((item, i) => {
+        if (i === 0) return;
+
+        tl.to(items[i - 1], {
+          opacity: 0,
+          y: -50,
+          duration: 0.5, // Reduced from 1 to 0.5 for snappier transitions
+        }).to(
+          item,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5, // Reduced from 1 to 0.5
+          },
+          "<"
+        );
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-[#0a0a0a] to-[#121212] relative overflow-hidden">
-      {/* Background decoration */}
+    <section className="event-highlights-mobile py-20 px-6 bg-gradient-to-b from-[#0a0a0a] to-[#121212] relative overflow-hidden">
+      {" "}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-10 w-32 h-32 border border-[#52f3fe]/30 rounded-full animate-pulse"></div>
         <div className="absolute bottom-10 right-10 w-48 h-48 border border-[#e223a5]/30 rounded-full animate-pulse"></div>
       </div>
-
-       <motion.div
+      <motion.div
         className="text-center mb-12 relative z-10"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -80,57 +119,53 @@ export function EventHighlightsMobile() {
           Experience the Festival
         </h2>
         <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-          Two days of culture, music, and celebration that bring Yoruba heritage to life.
+          Two days of culture, music, and celebration that bring Yoruba heritage
+          to life.
         </p>
       </motion.div>
-
-      <motion.div
-        className="space-y-12 relative z-10"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
+      <div
+        ref={containerRef}
+        className="relative z-10"
+        style={{ position: "relative", height: "100vh" }} 
       >
         {highlights.map((highlight, index) => (
-          <motion.div
+          <div
             key={index}
-            className="flex flex-col items-center gap-6 p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-[#52f3fe]/20 hover:border-[#52f3fe]/50 transition-all duration-500 hover:bg-white/10 hover:shadow-2xl hover:shadow-[#52f3fe]/20"
-            variants={itemVariants}
-            whileHover={{ scale: 1.02 }}
+            className="highlight-item flex flex-col items-center gap-6 p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-[#52f3fe]/20 hover:border-[#52f3fe]/50 transition-all duration-500 hover:bg-white/10 hover:shadow-2xl hover:shadow-[#52f3fe]/20"
+            style={{ position: "absolute", top: 0, width: "100%" }} 
           >
-            <motion.div
+            <div
               className="w-full h-72 bg-cover bg-center rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
               style={{ backgroundImage: `url(${highlight.image})` }}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
             />
-             <div className="text-center">
-              <motion.div
-                className="mb-6"
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
+            <div className="text-center">
+              <div className="mb-6">
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#52f3fe]/30 to-[#e223a5]/30 flex items-center justify-center mx-auto shadow-lg">
                   <highlight.icon className="w-8 h-8 text-[#52f3fe]" />
                 </div>
-              </motion.div>
-              <h3 className="text-xl md:text-2xl font-semibold mb-4 text-white">{highlight.title}</h3>
-              <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-lg mx-auto">{highlight.description}</p>
+              </div>
+              <h3 className="text-xl md:text-2xl font-semibold mb-4 text-white">
+                {highlight.title}
+              </h3>
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-lg mx-auto">
+                {highlight.description}
+              </p>
             </div>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
-
-      <motion.div
-        className="text-center mt-16 relative z-10"
+      </div>
+     <motion.div
+        className="text-center mt-8 relative z-10" 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] as any, delay: 0.5 }}
+        transition={{
+          duration: 0.8,
+          ease: [0.22, 1, 0.36, 1] as any,
+          delay: 0.5,
+        }}
         viewport={{ once: true }}
       >
- <button className="bg-gradient-to-r from-[#52f3fe] to-[#e223a5] text-black px-8 py-4 rounded-xl font-semibold hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-[#52f3fe]/50 text-sm md:text-base">
+        <button className="bg-gradient-to-r from-[#52f3fe] to-[#e223a5] text-black px-8 py-4 rounded-xl font-semibold hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-[#52f3fe]/50 text-sm md:text-base">
           Explore the Schedule
         </button>
       </motion.div>
