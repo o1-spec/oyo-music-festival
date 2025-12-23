@@ -10,7 +10,7 @@ const highlights = [
     icon: Mic2,
     title: "Live Performances",
     description:
-      "World-class artists celebrating Yoruba music traditions with electrifying shows and fusion performances.",
+      "Dive into electrifying live performances by world-class artists who honor Yoruba music traditions. Experience fusion shows that blend ancient rhythms with contemporary beats, interactive sessions where the audience participates in call-and-response, and unforgettable moments that celebrate the soul of Yoruba culture through dance, song, and storytelling, creating an atmosphere of joy and connection.",
     image:
       "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop",
   },
@@ -18,7 +18,7 @@ const highlights = [
     icon: Users,
     title: "Distinguished Speakers",
     description:
-      "Academic leaders and cultural experts discussing the evolution of Yoruba heritage and its global impact.",
+      "Engage with academic leaders and cultural experts who delve into the evolution of Yoruba heritage and its global impact. Discover inspiring talks on tradition, innovation, and the future of cultural preservation, followed by interactive Q&A sessions that encourage dialogue, foster learning, and highlight the importance of safeguarding Yoruba traditions for generations to come.",
     image:
       "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
   },
@@ -26,7 +26,7 @@ const highlights = [
     icon: Palette,
     title: "Art Exhibitions",
     description:
-      "Immersive displays blending traditional Yoruba art with contemporary expressions in stunning galleries.",
+      "Explore immersive art exhibitions that seamlessly blend traditional Yoruba art with contemporary expressions in stunning galleries. Admire intricate sculptures, vibrant paintings, and interactive installations that tell compelling stories of heritage and creativity, offering visitors a visual journey through Yoruba history, symbolism, and artistic innovation.",
     image:
       "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&h=600&fit=crop",
   },
@@ -34,7 +34,7 @@ const highlights = [
     icon: Trophy,
     title: "Cultural Games",
     description:
-      "Interactive competitions in Ewi, DJ mixing, and cooking, showcasing talent and community spirit.",
+      "Participate in interactive cultural games featuring competitions in Ewi (Yoruba poetry), DJ mixing battles, and cooking challenges that showcase talent and community spirit. Enjoy fun challenges with prizes, collaborative activities, and opportunities to celebrate Yoruba creativity, unity, and playful traditions in a lively, inclusive environment.",
     image:
       "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&h=600&fit=crop",
   },
@@ -42,7 +42,7 @@ const highlights = [
     icon: Sparkles,
     title: "Food & Vendors",
     description:
-      "Authentic Yoruba cuisine, artisan marketplaces, and vibrant stalls offering unique cultural experiences.",
+      "Indulge in authentic Yoruba cuisine at vibrant food stalls offering traditional dishes like pounded yam, egusi soup, and refreshing beverages infused with local flavors. Browse artisan marketplaces with handmade crafts, souvenirs, and unique cultural items, while engaging in immersive vendor interactions that highlight Yoruba craftsmanship and culinary heritage.",
     image:
       "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=600&fit=crop",
   },
