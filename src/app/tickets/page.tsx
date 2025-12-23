@@ -95,23 +95,23 @@ export default function Tickets() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-[#52f3fe] to-[#e223a5] bg-clip-text text-transparent mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold bg-gradient-to-r from-[#52f3fe] to-[#e223a5] bg-clip-text text-transparent mb-6">
             Get Your Tickets
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
             Join us for an unforgettable celebration of Yoruba culture. Early bird pricing ends soon!
           </p>
         </motion.div>
       </section>
 
       {/* Ticket Tiers */}
-      <section className="py-20 px-4">
+      <section className="py-10 sm:py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {ticketTiers.map((tier, index) => (
               <motion.div
                 key={tier.name}
-                className={`bg-white/5 backdrop-blur-sm rounded-2xl p-6 border transition-all duration-300 hover:scale-105 ${
+                className={`bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border transition-all duration-300 hover:scale-105 ${
                   tier.popular ? 'border-[#52f3fe] shadow-lg shadow-[#52f3fe]/20' : 'border-[#52f3fe]/20'
                 }`}
                 initial={{ opacity: 0, y: 30 }}
@@ -123,27 +123,27 @@ export default function Tickets() {
                     Most Popular
                   </div>
                 )}
-                <h3 className="text-2xl font-bold mb-2">{tier.name}</h3>
-                <div className="text-3xl font-bold text-[#52f3fe] mb-2">
+                <h3 className="text-xl sm:text-2xl font-bold mb-2">{tier.name}</h3>
+                <div className="text-2xl sm:text-3xl font-bold text-[#52f3fe] mb-2">
                   {tier.price}
                   {tier.originalPrice && (
-                    <span className="text-lg text-muted-foreground line-through ml-2">
+                    <span className="text-base sm:text-lg text-muted-foreground line-through ml-2">
                       {tier.originalPrice}
                     </span>
                   )}
                 </div>
-                <p className="text-muted-foreground mb-4">{tier.description}</p>
+                <p className="text-muted-foreground mb-4 text-sm sm:text-base">{tier.description}</p>
                 <ul className="space-y-2 mb-6">
                   {tier.features.map((feature, i) => (
                     <li key={i} className="flex items-center gap-2">
                       <Check className="w-4 h-4 text-[#52f3fe]" />
-                      <span className="text-sm">{feature}</span>
+                      <span className="text-xs sm:text-sm">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 <button
                   onClick={() => handlePurchase(tier.name)}
-                  className="w-full bg-gradient-to-r from-[#52f3fe] to-[#e223a5] text-black px-6 py-3 rounded-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-[#52f3fe]/50"
+                  className="w-full bg-gradient-to-r from-[#52f3fe] to-[#e223a5] text-black px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-[#52f3fe]/50 text-sm sm:text-base"
                 >
                   Buy Now
                 </button>
@@ -154,18 +154,18 @@ export default function Tickets() {
       </section>
 
       {/* Purchase Info */}
-      <section className="py-20 px-4 bg-white/5">
+      <section className="py-10 sm:py-20 px-4 bg-white/5">
         <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 text-center">
             <motion.div
               className="flex flex-col items-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <CreditCard className="w-12 h-12 text-[#52f3fe] mb-4" />
-              <h3 className="text-xl font-bold mb-2">Secure Payment</h3>
-              <p className="text-muted-foreground">Safe transactions via Paystack/Stripe</p>
+              <CreditCard className="w-10 h-10 sm:w-12 sm:h-12 text-[#52f3fe] mb-4" />
+              <h3 className="text-lg sm:text-xl font-bold mb-2">Secure Payment</h3>
+              <p className="text-muted-foreground text-sm sm:text-base">Safe transactions via Paystack/Stripe</p>
             </motion.div>
             <motion.div
               className="flex flex-col items-center"
@@ -173,9 +173,9 @@ export default function Tickets() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <Calendar className="w-12 h-12 text-[#52f3fe] mb-4" />
-              <h3 className="text-xl font-bold mb-2">Early Bird Ends Soon</h3>
-              <p className="text-muted-foreground">Don't miss out on savings</p>
+              <Calendar className="w-10 h-10 sm:w-12 sm:h-12 text-[#52f3fe] mb-4" />
+              <h3 className="text-lg sm:text-xl font-bold mb-2">Early Bird Ends Soon</h3>
+              <p className="text-muted-foreground text-sm sm:text-base">Don't miss out on savings</p>
             </motion.div>
             <motion.div
               className="flex flex-col items-center"
@@ -183,29 +183,29 @@ export default function Tickets() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <Shield className="w-12 h-12 text-[#52f3fe] mb-4" />
-              <h3 className="text-xl font-bold mb-2">Refund Policy</h3>
-              <p className="text-muted-foreground">Non-refundable except for cancellation</p>
+              <Shield className="w-10 h-10 sm:w-12 sm:h-12 text-[#52f3fe] mb-4" />
+              <h3 className="text-lg sm:text-xl font-bold mb-2">Refund Policy</h3>
+              <p className="text-muted-foreground text-sm sm:text-base">Non-refundable except for cancellation</p>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* FAQs */}
-      <section className="py-20 px-4">
+      <section className="py-10 sm:py-20 px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-[#52f3fe]">Frequently Asked Questions</h2>
-          <div className="space-y-6">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-[#52f3fe]">Frequently Asked Questions</h2>
+          <div className="space-y-4 sm:space-y-6">
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
-                className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-[#52f3fe]/20"
+                className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-[#52f3fe]/20"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <h3 className="text-lg font-semibold mb-2">{faq.question}</h3>
-                <p className="text-muted-foreground">{faq.answer}</p>
+                <h3 className="text-base sm:text-lg font-semibold mb-2">{faq.question}</h3>
+                <p className="text-muted-foreground text-sm sm:text-base">{faq.answer}</p>
               </motion.div>
             ))}
           </div>

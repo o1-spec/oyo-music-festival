@@ -85,33 +85,33 @@ export default function Partner() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-[#52f3fe] to-[#e223a5] bg-clip-text text-transparent mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold bg-gradient-to-r from-[#52f3fe] to-[#e223a5] bg-clip-text text-transparent mb-6">
             Partner With Us
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
             Join us in celebrating Yoruba culture. Become a partner and connect with thousands while making a lasting impact.
           </p>
         </motion.div>
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 px-4">
+      <section className="py-10 sm:py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-[#52f3fe]">Why Partner With Us?</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-[#52f3fe]">Why Partner With Us?</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {partnershipBenefits.map((benefit, index) => (
               <motion.div
                 key={index}
-                className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-[#52f3fe]/20 text-center hover:border-[#52f3fe]/50 transition-colors duration-300"
+                className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-[#52f3fe]/20 text-center hover:border-[#52f3fe]/50 transition-colors duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <div className="w-16 h-16 bg-[#52f3fe]/20 rounded-full flex items-center justify-center mx-auto mb-4 text-[#52f3fe]">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#52f3fe]/20 rounded-full flex items-center justify-center mx-auto mb-4 text-[#52f3fe]">
                   {benefit.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
-                <p className="text-muted-foreground">{benefit.description}</p>
+                <h3 className="text-lg sm:text-xl font-bold mb-2">{benefit.title}</h3>
+                <p className="text-muted-foreground text-sm sm:text-base">{benefit.description}</p>
               </motion.div>
             ))}
           </div>
@@ -119,27 +119,27 @@ export default function Partner() {
       </section>
 
       {/* Partnership Tiers */}
-      <section className="py-20 px-4 bg-white/5">
+      <section className="py-10 sm:py-20 px-4 bg-white/5">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-[#52f3fe]">Partnership Opportunities</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-[#52f3fe]">Partnership Opportunities</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {partnershipTiers.map((tier, index) => (
               <motion.div
                 key={tier.name}
-                className="bg-[#121212] rounded-2xl p-6 border border-[#52f3fe]/20 hover:border-[#52f3fe]/50 transition-colors duration-300"
+                className="bg-[#121212] rounded-2xl p-4 sm:p-6 border border-[#52f3fe]/20 hover:border-[#52f3fe]/50 transition-colors duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <div className="text-center mb-4">
-                  <h3 className="text-xl font-bold mb-2">{tier.name}</h3>
-                  <p className="text-2xl font-bold text-[#52f3fe]">{tier.price}</p>
+                  <h3 className="text-lg sm:text-xl font-bold mb-2">{tier.name}</h3>
+                  <p className="text-xl sm:text-2xl font-bold text-[#52f3fe]">{tier.price}</p>
                 </div>
                 <ul className="space-y-2">
                   {tier.benefits.map((benefit, i) => (
                     <li key={i} className="flex items-start gap-2">
                       <div className="w-2 h-2 bg-[#52f3fe] rounded-full mt-2 flex-shrink-0"></div>
-                      <span className="text-sm text-muted-foreground">{benefit}</span>
+                      <span className="text-xs sm:text-sm text-muted-foreground">{benefit}</span>
                     </li>
                   ))}
                 </ul>
@@ -150,20 +150,20 @@ export default function Partner() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 px-4 text-center">
+      <section className="py-10 sm:py-20 px-4 text-center">
         <motion.div
           className="max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#52f3fe]">Ready to Partner?</h2>
-          <p className="text-muted-foreground mb-8">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-[#52f3fe]">Ready to Partner?</h2>
+          <p className="text-muted-foreground mb-6 sm:mb-8 text-sm sm:text-base">
             Let's discuss how we can work together to make the Oyo Music Festival unforgettable. Contact our partnership team today.
           </p>
           <a
             href="/contact"
-            className="inline-block bg-gradient-to-r from-[#52f3fe] to-[#e223a5] text-black px-8 py-4 rounded-xl font-semibold hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-[#52f3fe]/50"
+            className="inline-block bg-gradient-to-r from-[#52f3fe] to-[#e223a5] text-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-[#52f3fe]/50 text-sm sm:text-base"
           >
             Get in Touch
           </a>

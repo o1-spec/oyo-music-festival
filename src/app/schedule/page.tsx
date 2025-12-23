@@ -50,10 +50,10 @@ export default function Schedule() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-[#52f3fe] to-[#e223a5] bg-clip-text text-transparent mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold bg-gradient-to-r from-[#52f3fe] to-[#e223a5] bg-clip-text text-transparent mb-6">
             Festival Schedule
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
             Plan your perfect festival experience. Detailed timings for all events, performances, and activities.
           </p>
         </motion.div>
@@ -62,11 +62,11 @@ export default function Schedule() {
       {/* Day Tabs */}
       <section className="py-10 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="flex justify-center mb-8">
-            <div className="bg-white/5 backdrop-blur-sm rounded-lg p-1 border border-[#52f3fe]/20">
+          <div className="flex flex-col sm:flex-row justify-center mb-8 gap-2 sm:gap-0">
+            <div className="bg-white/5 backdrop-blur-sm rounded-lg p-1 border border-[#52f3fe]/20 flex flex-col sm:flex-row w-full sm:w-auto">
               <button
                 onClick={() => setActiveDay('day1')}
-                className={`px-6 py-3 rounded-md font-semibold transition-colors ${
+                className={`px-4 sm:px-6 py-3 rounded-md font-semibold transition-colors text-sm sm:text-base ${
                   activeDay === 'day1' ? 'bg-[#52f3fe] text-black' : 'text-white hover:bg-white/10'
                 }`}
               >
@@ -74,7 +74,7 @@ export default function Schedule() {
               </button>
               <button
                 onClick={() => setActiveDay('day2')}
-                className={`px-6 py-3 rounded-md font-semibold transition-colors ${
+                className={`px-4 sm:px-6 py-3 rounded-md font-semibold transition-colors text-sm sm:text-base ${
                   activeDay === 'day2' ? 'bg-[#52f3fe] text-black' : 'text-white hover:bg-white/10'
                 }`}
               >
@@ -94,30 +94,30 @@ export default function Schedule() {
             {scheduleData[activeDay].map((event, index) => (
               <motion.div
                 key={index}
-                className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-[#52f3fe]/20 hover:border-[#52f3fe]/50 transition-colors duration-300"
+                className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-[#52f3fe]/20 hover:border-[#52f3fe]/50 transition-colors duration-300"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-[#52f3fe]/20 rounded-lg flex items-center justify-center">
+                <div className="flex flex-col sm:flex-row items-start gap-4">
+                  <div className="flex-shrink-0 mx-auto sm:mx-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#52f3fe]/20 rounded-lg flex items-center justify-center">
                       {getIcon(event.type)}
                     </div>
                   </div>
-                  <div className="flex-grow">
-                    <div className="flex items-center gap-4 mb-2">
-                      <div className="flex items-center gap-2 text-[#52f3fe] font-semibold">
+                  <div className="flex-grow text-center sm:text-left">
+                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 sm:gap-4 mb-2">
+                      <div className="flex items-center gap-2 text-[#52f3fe] font-semibold text-sm sm:text-base">
                         <Clock className="w-4 h-4" />
                         {event.time}
                       </div>
-                      <div className="flex items-center gap-2 text-muted-foreground text-sm">
+                      <div className="flex items-center gap-2 text-muted-foreground text-xs sm:text-sm">
                         <MapPin className="w-4 h-4" />
                         {event.location}
                       </div>
                     </div>
-                    <h3 className="text-xl font-bold mb-2">{event.title}</h3>
-                    <p className="text-muted-foreground">{event.description}</p>
+                    <h3 className="text-lg sm:text-xl font-bold mb-2">{event.title}</h3>
+                    <p className="text-muted-foreground text-sm sm:text-base">{event.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -134,12 +134,12 @@ export default function Schedule() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          <p className="text-muted-foreground mb-4">
+          <p className="text-muted-foreground mb-4 text-sm sm:text-base">
             Schedule is subject to change. Check back for updates or follow us on social media.
           </p>
           <a
             href="/contact"
-            className="inline-block bg-gradient-to-r from-[#52f3fe] to-[#e223a5] text-black px-6 py-3 rounded-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-[#52f3fe]/50"
+            className="inline-block bg-gradient-to-r from-[#52f3fe] to-[#e223a5] text-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-[#52f3fe]/50 text-sm sm:text-base"
           >
             Contact Us for Updates
           </a>
